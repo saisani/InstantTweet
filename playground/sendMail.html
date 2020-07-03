@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>  
+    <script type="text/javascript">
+        USERNAME = "tweetatmeplease@gmail.com"
+        PASSWORD = "DONTTALK2ME"
+
+        function sendEmail() {
+            Email.send({
+                Host: "smtp.gmail.com",
+                Username : USERNAME,
+                Password : PASSWORD,
+                To : 'f59ottk2@robot.zapier.com ',
+                From : USERNAME,
+                Subject : "#IFTTT",
+                Body : "are you a skywalker",
+            })
+            .then(function(message){
+                alert("mail sent successfully")
+            });
+        }
+    </script>
+</head>
+<body>  
+    <form method="post">
+        <input type="button" value="Send Email" onclick="sendEmail()"/>
+    </form>  
+</body>
+</html>

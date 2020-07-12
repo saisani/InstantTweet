@@ -7,6 +7,7 @@
   // eventually add to environment variables:
   AUTOMATION_URL = "https://n8up.herokuapp.com/webhook/1/webhook/listen";
   SENTENCE_ID = "block-yui_3_17_2_1_1593335120037_4492";
+  IMAGE_ID = "block-yui_3_17_2_1_1593243056431_3681";
   TWEET_CHAR_LIMIT = 280;
 
   // create queue to store phrases
@@ -18,10 +19,21 @@
   // changes the header with the text in the argument
   function changeText(newText)
   {
-    completeText = newText + "... (Click Me Again?)"
+    completeText = newText;
     $(document).ready(function(){
         $("#" + SENTENCE_ID).find("h3")
           .text(completeText);
+    });
+
+    setTimeout(clearText, 3*1000);
+  }
+
+  // removes text in the header
+  function clearText()
+  {
+    $(document).ready(function(){
+        $("#" + SENTENCE_ID).find("h3")
+          .text("");
     });
   }
 
@@ -63,6 +75,13 @@
       changeText(myRec.resultString);
     }
   }
+
+  // changes cursor when hovering over image
+  function changeImage()
+  {
+    img = document.getElementById(IMAGE_ID).getElementsByTagName("img");
+    img[0].style.cursor = "url('https://drive.google.com/uc?export=view&id=1hDk7a0P7pDODQuAsYKpH8KIx8J8ii_01'), auto";
+  }
   
   function setup()
   {
@@ -75,9 +94,15 @@
     // textSize(32);
     // textAlign(CENTER);
     // text("say something", width/2, height/2);
+
+    // change style of img block
+    changeImage();
+
+    // clears text every 2 seconds
     
-    document.getElementById(SENTENCE_ID).onclick = restartMic;
-    
+    // set callback to restart mic
+    document.getElementById(IMAGE_ID).onclick = restartMic;
+
     myRec.onResult = showResult;
     // myRec.onEnd = restartMic;
     // myRec.onError = restartMic;

@@ -9,9 +9,6 @@
   SENTENCE_ID = "block-yui_3_17_2_1_1593335120037_4492";
   IMAGE_ID = "block-yui_3_17_2_1_1593243056431_3681";
   TWEET_CHAR_LIMIT = 280;
-
-  // create queue to store phrases
-  // var phraseQueue = new Queue();
   
   var myRec = new p5.SpeechRec();
   myRec.continuous = false;
@@ -80,32 +77,28 @@
   function changeImage()
   {
     img = document.getElementById(IMAGE_ID).getElementsByTagName("img");
+
+    // cursor is hosted in google drive
     img[0].style.cursor = "url('https://drive.google.com/uc?export=view&id=1hDk7a0P7pDODQuAsYKpH8KIx8J8ii_01'), auto";
   }
   
   function setup()
   {
-    // graphics stuff DO NOT DO:
+    // NOT NEEDED:
+    // graphics stuff 
     // createCanvas(800, 400);
     // background(255, 255, 255);
     // fill(0, 0, 0, 255);
-    
-    // instructions:
     // textSize(32);
     // textAlign(CENTER);
     // text("say something", width/2, height/2);
 
     // change style of img block
     changeImage();
-
-    // clears text every 2 seconds
     
     // set callback to restart mic
     document.getElementById(IMAGE_ID).onclick = restartMic;
 
     myRec.onResult = showResult;
-    // myRec.onEnd = restartMic;
-    // myRec.onError = restartMic;
-    // myRec.start();
   }
 </script>
